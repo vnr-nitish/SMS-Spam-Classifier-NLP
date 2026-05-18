@@ -1,104 +1,173 @@
-# 📱 SMS Spam Classifier | NLP Project  
-**Author:** Nitish Raj Vinnakota | [LinkedIn](https://linkedin.com/in/vnr-nitish)
+# SMS Spam Detection System using Machine Learning
+
+## Project Overview
+
+SMS spam messages have become a common issue, often containing advertisements, phishing links, or fraudulent content. This project develops an intelligent SMS Spam Detection System using Machine Learning and Natural Language Processing (NLP) techniques to classify SMS messages as either spam or ham (non-spam).
+
+The system converts textual data into numerical representations and applies classification techniques to accurately detect unwanted messages. Different feature extraction methods were analyzed to identify the best-performing approach.
 
 ---
 
-## 🔍 Project Overview
+## Problem Statement
 
-This project is an end-to-end **Natural Language Processing (NLP)** pipeline to classify SMS messages as either **Spam** or **Ham (Not Spam)**. It demonstrates how to preprocess text, extract features using **TF-IDF**, apply multiple classification models, and evaluate model performance using real-world data.
-
-It was developed as part of my **Capstone Project** during a Data Science internship at **Teachnook**.
+Spam SMS messages can negatively affect user experience and may contain malicious content. Manual filtering becomes inefficient as message volume increases. This project aims to automate spam detection by building a machine learning model capable of accurately classifying incoming SMS messages.
 
 ---
 
-## 🎯 Objective
+## Dataset Information
 
-To build a robust SMS classifier that automatically filters out spam messages using classic machine learning algorithms on textual data.
+**Dataset Used:** SMS Spam Dataset
 
----
+### Target Categories
 
-## 📁 Dataset Info
+| Label | Description |
+|---------|-------------|
+| Ham | Legitimate SMS messages |
+| Spam | Unwanted or promotional messages |
 
-- **Source:** UCI Machine Learning Repository (SMS Spam Collection)
-- **Instances:** 5,572 SMS messages
-- **Columns:**
-  - `v1`: Label (spam / ham)
-  - `v2`: Message text
+### Dataset Distribution
 
----
+| Category | Percentage |
+|-----------|------------|
+| Ham | 86.6% |
+| Spam | 13.4% |
 
-## 🧠 Machine Learning Workflow
+Observation:
 
-### ✅ Data Preprocessing:
-- Dropped irrelevant columns
-- Renamed columns for clarity (`v1 → label`, `v2 → message`)
-- Checked for missing/null values
-
-### ✅ Text Vectorization:
-- Used **TF-IDF Vectorizer** to convert text into numerical features
-- Explored `CountVectorizer` vs. `TfidfVectorizer`
-
-### ✅ Model Building:
-- Trained and tested:
-  - **Gaussian Naive Bayes**
-  - **K-Nearest Neighbors (KNN)**
-- Split dataset using `train_test_split` (80/20)
-
-### ✅ Evaluation:
-- Used:
-  - **Accuracy Score**
-  - **Confusion Matrix**
-  - **Classification Report** (Precision, Recall, F1-score)
-- Visualized confusion matrices using `ConfusionMatrixDisplay`
+The dataset shows class imbalance because legitimate messages significantly outnumber spam messages.
 
 ---
 
-## 📊 Key Results
+## Key Highlights
 
-| Model                 | Accuracy |
-|----------------------|----------|
-| Gaussian Naive Bayes | ~87%     |
-| KNN Classifier        | ~88%     |
+### Text Processing
 
-- **KNN outperformed Naive Bayes** slightly in accuracy, but Naive Bayes remains more scalable and interpretable for NLP tasks.
-- The model correctly identifies spam with **high recall**, minimizing false negatives.
+- Applied Natural Language Processing techniques for SMS analysis
+- Converted text data into machine-readable representations
+- Prepared raw text for classification tasks
 
----
+### Feature Extraction
 
-## 🧰 Tools & Technologies Used
+Implemented two text vectorization methods:
 
-- **Python**
-- **Pandas**, **NumPy**
-- **Seaborn**, **Matplotlib**
-- **scikit-learn**
-- **TF-IDF Vectorization**
-- **Google Colab**
+- CountVectorizer
+- TF-IDF Vectorizer
 
----
+### Model Development
 
-## 💡 Highlights
+- Implemented K-Nearest Neighbors (KNN)
+- Trained multiple configurations
+- Compared model performance across feature extraction methods
 
-- ✅ Implemented NLP preprocessing from scratch
-- ✅ Vectorized raw text using TF-IDF
-- ✅ Compared model performances using industry-standard metrics
-- ✅ Clean and modular ML pipeline for reproducibility
+### Performance Insights
+
+- Achieved high prediction accuracy
+- Compared vectorization approaches
+- Identified the best-performing model
 
 ---
 
-## 🚀 Future Work
+## Technologies Used
 
-- Integrate advanced models like **SVM**, **Logistic Regression**, or **XGBoost**
-- Add **Grid Search CV** or **RandomizedSearchCV** for hyperparameter tuning
-- Explore **deployment options** using Streamlit or Flask
-- Incorporate **word embeddings** for semantic text understanding
-
----
-
-## 📫 Contact
-
-📧 **Email:** nvinnako2@gitam.in  
-🔗 **LinkedIn:** [linkedin.com/in/vnr-nitish](https://linkedin.com/in/vnr-nitish)
+| Category | Tools |
+|-----------|-------|
+| Programming Language | Python |
+| Development Environment | Jupyter Notebook |
+| Libraries | Pandas, NumPy |
+| Visualization | Matplotlib, Seaborn |
+| Machine Learning | Scikit-Learn |
+| NLP | CountVectorizer, TF-IDF |
 
 ---
 
-> “Built to detect spam. Powered by text, logic, and machine learning.”  
+## Project Workflow
+
+### Step 1: Data Collection
+
+- Imported SMS spam dataset
+
+### Step 2: Data Preparation
+
+- Separated features and labels
+- Performed class distribution analysis
+
+### Step 3: Train-Test Split
+
+Dataset division:
+
+- Training Data → 80%
+- Testing Data → 20%
+- Random State → 42
+
+Purpose:
+
+- Training data used for model learning
+- Testing data used for performance evaluation
+
+### Step 4: Feature Engineering
+
+Applied:
+
+**CountVectorizer**
+- Converts text into word-frequency vectors
+
+**TF-IDF Vectorizer**
+- Assigns weighted importance to words
+
+### Step 5: Model Training
+
+Implemented:
+
+**K-Nearest Neighbors (KNN)**
+
+Two configurations:
+
+1. CountVectorizer + KNN
+2. TF-IDF + KNN
+
+### Step 6: Model Evaluation
+
+Compared model performance using:
+
+- Training Accuracy
+- Testing Accuracy
+- Prediction analysis
+
+---
+
+## Performance Results
+
+### Model Comparison
+
+| Model Configuration | Training Accuracy | Testing Accuracy |
+|---------------------|------------------|------------------|
+| CountVectorizer + KNN | 97.3% | 96.8% |
+| TF-IDF + KNN | 92.0% | 91.6% |
+
+---
+
+## Best Performing Model
+
+CountVectorizer with K-Nearest Neighbors achieved the highest testing accuracy of:
+
+# 96.8%
+
+This model demonstrated superior capability in identifying spam messages.
+
+---
+
+## Future Improvements
+
+- Hyperparameter tuning
+- Deep learning-based text classification
+- Advanced NLP preprocessing techniques
+- Real-time SMS spam detection system
+- Web application deployment using Flask or Streamlit
+
+---
+
+## Author
+
+**Vinnakota Nitish Raj**
+
+LinkedIn: Your LinkedIn Profile URL
